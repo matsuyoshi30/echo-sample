@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Echo sample</title>
+  <script src="http://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input v-model="taskname" placeholder="taskname">
+    <button v-on:click="add">register</button>
+    <ul>
+      <div v-if="todos.length === 0">
+        <p>No todos</p>
+      </div>
+      <ul v-else id="todo-list">
+        <li v-for="todo in todos">
+          <input type="checkbox" :checked="todo.completed" v-on:change="check(todo)" />
+          <label>{{ todo.taskname }}</label>
+          <span class="remove-item" v-on:click="remove(todo)">🗑️</span>
+        </li>
+      </ul>
+    </ul>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
